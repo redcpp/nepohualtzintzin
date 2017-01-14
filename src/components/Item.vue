@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'item',
-  props: ['value', 'initActive'],
+  props: ['col', 'value', 'initActive'],
   data () {
     return {
       active: this.initActive
@@ -16,7 +16,7 @@ export default {
   methods: {
     toogleActive: function () {
       this.active ^= 1
-      this.$emit('toogle', this.active, this.value)
+      this.$emit('toogle', this.col, this.active, this.value)
     }
   }
 }
@@ -30,10 +30,13 @@ export default {
   margin: 5px auto;
   background-color: transparent;
   border: none;
+  border-radius: 3px;
   outline: none;
 }
 
 .item.active {
-  background-color: #b7e3e4;
+  color: #fff;
+  font-weight: bold;
+  background-color: #42b983;
 }
 </style>

@@ -1,7 +1,12 @@
 <template>
   <div class="hello">
-    <h1>Número representado: {{ number }}</h1>
-    <abacus :initCols="cols" @numberChange="reload"></abacus>
+    <h1>
+      Nepohualtzintzin<br>
+      <small>Ábaco Maya por Diego Said Anaya Mancilla</small>
+    </h1>
+    <abacus :initCols="cols" @numberChange="changeNumber"></abacus>
+    <h2 class="fl w-50">Vigecimal: {{ number | toUpperCase }}</h2>
+    <h2 class="fl w-50">Decimal: {{ number | toBaseTen }}</h2>
   </div>
 </template>
 
@@ -15,13 +20,21 @@ export default {
   },
   data () {
     return {
-      number: 0,
+      number: '0',
       cols: 10
     }
   },
   methods: {
-    reload: function (n) {
+    changeNumber: function (n) {
       this.number = n
+    }
+  },
+  filters: {
+    toUpperCase: function (str) {
+      return str.toUpperCase()
+    },
+    toBaseTen: function (n) {
+      return parseInt(n, 20).toString(10)
     }
   }
 }
@@ -32,7 +45,8 @@ export default {
   text-align: center;
 }
 
-a {
+small {
+  font-size: 10px;
   color: #42b983;
 }
 </style>

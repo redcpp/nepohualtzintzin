@@ -2,14 +2,13 @@
   <div class="abacus w-90">
     <div v-for="col in cols" class="stick w-10">
       <span v-for="row in topRows">
-        <item :value="5" :initActive="0" @toogle="sum"></item>
-      </span >
+        <item :value="5" :initActive="0" @toogle="sumChange" :col="col"></item>
+      </span>
     </div>
-    <hr>
-     <div v-for="col in cols" class="stick w-10">
+    <div v-for="col in cols" class="stick w-10">
       <span v-for="row in bottomRows">
-        <item :value="1" :initActive="0" @toogle="sum"></item>
-      </span >
+        <item :value="1" :initActive="0" @toogle="sumChange" :col="col"></item>
+      </span>
     </div>
   </div>
 </template>
@@ -25,17 +24,30 @@ export default {
   },
   data () {
     return {
-      number: 0,
       cols: this.initCols,
       topRows: 3,
-      bottomRows: 4
+      bottomRows: 4,
+      values: Array(this.initCols + 1).fill(0)
     }
   },
   methods: {
-    sum: function (active, value) {
+    sumChange: function (col, active, value) {
       let inc = active ? value : -value
-      this.number += inc
-      this.$emit('numberChange', this.number)
+      this.values[col] += inc
+      this.$emit('numberChange', this.currentNumber())
+    },
+    currentNumber: function () {
+      let current = this.values.reduce(this.concatWithFormat, 0)
+      return this.removeLeadingZeros(current)
+    },
+    concatWithFormat: function (a, b) {
+      return this.giveFormat(a) + this.giveFormat(b)
+    },
+    removeLeadingZeros: function (n) {
+      return this.giveFormat(parseInt(n, 20))
+    },
+    giveFormat: function (n) {
+      return n.toString(20)
     }
   }
 }
@@ -49,7 +61,6 @@ export default {
 
 .stick {
   display: inline-block;
-  background-color: #f9f7e8;
   border: 1px solid rgba(0,0,0,.3);
 }
 </style>
