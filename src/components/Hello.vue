@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>Current value: {{ number }}</h1>
-    <div class="abacus">
+    <div class="abacus w-90">
       <div v-for="stick in data.top" class="stick w-10">
         <span v-for="item in stick" class="coin">
           {{item.value}}
@@ -41,7 +41,6 @@ export default {
 
 .abacus {
   margin: auto;
-  width: 600px;
   border: 2px solid #aaa;
 }
 
@@ -49,13 +48,13 @@ export default {
   display: inline-block;
   background-color: #f9f7e8;
   border: 1px solid rgba(0,0,0,.3);
-  padding: 10px;
 }
 
 .coin {
   cursor: pointer;
   display: block;
-  padding: 10px;
+  padding: 15px;
+  margin: 5px;
 }
 
 .coin.active {
