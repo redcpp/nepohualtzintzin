@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
-    <h1>
-      Nepohualtzintzin<br>
-      <small>Ábaco Maya por Diego Said Anaya Mancilla</small>
+    <h1>Nepohualtzintzin<br>
+      <small>Ábaco Maya</small>
     </h1>
     <abacus :initCols="cols" @numberChange="changeNumber"></abacus>
     <h2 class="fl w-50">Vigecimal: {{ number | toUpperCase }}</h2>
