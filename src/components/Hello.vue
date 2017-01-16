@@ -4,7 +4,7 @@
       <small>Ábaco Maya</small>
     </h1>
     <abacus :initCols="cols" @numberChange="changeNumber"></abacus>
-    <h2 class="fl w-50">Vigecimal: {{ number | toUpperCase }}</h2>
+    <h2 class="fl w-50">Vigesimal: {{ number | toUpperCase }}</h2>
     <h2 class="fl w-50">Decimal: {{ number | toBaseTen }}</h2>
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
 }
 
 small {
-  font-size: 10px;
+  font-size: 11px;
   color: #42b983;
 }
 </style>
