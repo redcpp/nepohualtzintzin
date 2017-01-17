@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import Abacus from './Abacus'
 
 export default {
@@ -18,9 +18,11 @@ export default {
   components: {
     Abacus
   },
-  computed: mapState({
-    number: state => state.number
-  }),
+  computed: {
+    ...mapGetters([
+      'number'
+    ])
+  },
   filters: {
     toBaseTwenty (n) {
       return n.toString(20).toUpperCase()

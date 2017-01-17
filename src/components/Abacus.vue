@@ -2,12 +2,12 @@
   <div class="abacus w-90">
     <div v-for="col in cols" class="stick w-10">
       <span v-for="row in topRows">
-        <item :value="5" :col="col"></item>
+        <item :bar="top" :row="row" :col="col">5</item>
       </span>
     </div>
     <div v-for="col in cols" class="stick w-10">
       <span v-for="row in bottomRows">
-        <item :value="1" :col="col"></item>
+        <item :bar="bottom" :row="row" :col="col">1</item>
       </span>
     </div>
   </div>
@@ -24,13 +24,14 @@ export default {
   },
   data () {
     return {
-      topRows: 3,
-      bottomRows: 4
+      top: 'top',
+      bottom: 'bottom'
     }
   },
   computed: mapState({
-    number: state => state.number,
-    cols: state => state.cols
+    cols: state => state.cols,
+    topRows: state => state.abacus.top.length - 1,
+    bottomRows: state => state.abacus.bottom.length - 1
   })
 }
 </script>

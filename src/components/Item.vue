@@ -1,29 +1,30 @@
 <template>
-  <button class="item" @click="toogleAndChangeColumn" :class="{ active: active }">
-    {{value}}
+  <button class="item " @click="toogle" :class="{ active: active }">
+    <slot></slot>
   </button>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
+
 export default {
   name: 'item',
-  props: ['col', 'value'],
-  data () {
-    return {
-      active: 0
+  props: ['row', 'col', 'bar'],
+  computed: mapState({
+    active (state) {
+      return state.abacus[this.bar][this.row][this.col]
     }
-  },
+  }),
   methods: {
-    toogleAndChangeColumn () {
-      this.active ^= 1
-      this.addToColumn({
+    toogle () {
+      this.toogleRowCol({
         column: this.col,
-        increment: (this.active ? this.value : -this.value)
+        row: this.row,
+        bar: this.bar
       })
     },
     ...mapMutations([
-      'addToColumn'
+      'toogleRowCol'
     ])
   }
 }
