@@ -1,6 +1,6 @@
-# abaco-maya
+# Nepohualtzintzin
 
-> Abaco Maya (Nepohualtzintzin) educativo
+> Ábaco Maya Educativo
 
 ## Build Setup
 
