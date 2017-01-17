@@ -3,13 +3,14 @@
     <h1>Nepohualtzintzin<br>
       <small>Ábaco Maya</small>
     </h1>
-    <abacus :initCols="cols" @numberChange="changeNumber"></abacus>
-    <h2 class="fl w-50">Vigesimal: {{ number | toUpperCase }}</h2>
-    <h2 class="fl w-50">Decimal: {{ number | toBaseTen }}</h2>
+    <abacus></abacus>
+    <h2 class="fl w-50">Vigesimal: {{ number | toBaseTwenty }}</h2>
+    <h2 class="fl w-50">Decimal: {{ number }}</h2>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Abacus from './Abacus'
 
 export default {
@@ -17,23 +18,12 @@ export default {
   components: {
     Abacus
   },
-  data () {
-    return {
-      number: '0',
-      cols: 10
-    }
-  },
-  methods: {
-    changeNumber: function (n) {
-      this.number = n
-    }
-  },
+  computed: mapState({
+    number: state => state.number
+  }),
   filters: {
-    toUpperCase: function (str) {
-      return str.toUpperCase()
-    },
-    toBaseTen: function (n) {
-      return parseInt(n, 20).toString(10)
+    toBaseTwenty (n) {
+      return n.toString(20).toUpperCase()
     }
   }
 }
