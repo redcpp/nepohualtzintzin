@@ -33,6 +33,14 @@ export default new Vuex.Store({
         bottom: model._getBottomMatrix().slice(),
         value: model.getValue()
       }
+    },
+    setAbacusNumber (state, {number}) {
+      model.setValue(number)
+      state.abacus = {
+        top: model._getTopMatrix().slice(),
+        bottom: model._getBottomMatrix().slice(),
+        value: model.getValue()
+      }
     }
   }
 })
