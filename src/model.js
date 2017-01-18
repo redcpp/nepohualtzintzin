@@ -3,7 +3,6 @@
 function Nepohualtzintzin () {
   let topMatrix = []
   let bottomMatrix = []
-  const BASE = 20
   let COLS = 10
 
   ;(function init () {
@@ -17,44 +16,44 @@ function Nepohualtzintzin () {
 
   let toogleAt = function ({ bar, row, col }) {
     if (bar === 'top') {
-      toogleOnTopAt({row, col})
+      toogleOnTopMatrixAt({row, col})
     } else if (bar === 'bottom') {
-      toogleOnBottomAt({row, col})
+      toogleOnBottomMatrixAt({row, col})
     }
   }
 
-  let toogleOnTopAt = function ({ row, col }) {
+  let toogleOnTopMatrixAt = function ({ row, col }) {
     if (!topMatrix[row][col]) {
-      toogleOnAndUndernead({bar: 'top', row, col})
+      toogleOnAndBelowOf({bar: 'top', row, col})
     } else if (topMatrix[row][col]) {
-      toogleOnAndOnTopOf({bar: 'top', row, col})
+      toogleOnAndOnAboveOf({bar: 'top', row, col})
     }
   }
 
-  let toogleOnBottomAt = function ({ row, col }) {
+  let toogleOnBottomMatrixAt = function ({ row, col }) {
     if (!bottomMatrix[row][col]) {
-      toogleOnAndOnTopOf({bar: 'bottom', row, col})
+      toogleOnAndOnAboveOf({bar: 'bottom', row, col})
     } else if (bottomMatrix[row][col]) {
-      toogleOnAndUndernead({bar: 'bottom', row, col})
+      toogleOnAndBelowOf({bar: 'bottom', row, col})
     }
   }
 
-  function toogleOnAndUndernead ({ bar, row, col }) {
+  function toogleOnAndOnAboveOf ({ bar, row, col }) {
     let matrix = getMatrixForBar(bar)
     let value = matrix[row][col]
 
-    for (let i = row; i < matrix.length; i++) {
+    for (let i = row; i >= 0; i--) {
       if (matrix[i][col] === !value) break
 
       matrix[i][col] = !value
     }
   }
 
-  function toogleOnAndOnTopOf ({ bar, row, col }) {
+  function toogleOnAndBelowOf ({ bar, row, col }) {
     let matrix = getMatrixForBar(bar)
     let value = matrix[row][col]
 
-    for (let i = row; i >= 0; i--) {
+    for (let i = row; i < matrix.length; i++) {
       if (matrix[i][col] === !value) break
 
       matrix[i][col] = !value
@@ -85,7 +84,7 @@ function Nepohualtzintzin () {
     for (let col = COLS - 1; col >= 0; col--) {
       for (let row = 0; row < matrix.length; row++) {
         if (matrix[row][col]) {
-          value += Math.pow(BASE, exponet)
+          value += Math.pow(20, exponet)
         }
       }
       exponet++
@@ -104,18 +103,18 @@ function Nepohualtzintzin () {
     getValue,
 
     toogleAt,
-    toogleOnTopAt,
-    toogleOnBottomAt,
+    toogleOnTopMatrixAt,
+    toogleOnBottomMatrixAt,
     getStateAt,
 
     getCols () {
       return COLS
     },
 
-    _getTop () {
+    _getTopMatrix () {
       return topMatrix
     },
-    _getBottom () {
+    _getBottomMatrix () {
       return bottomMatrix
     }
   }

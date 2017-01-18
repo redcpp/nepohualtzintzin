@@ -15,21 +15,21 @@ describe('Nepohualtzintzin', function () {
 
   it('Toogles on top', function () {
     model.toogleAt({bar: 'top', row: 1, col: 2})
-    expect(model._getTop()).toEqual([
+    expect(model._getTopMatrix()).toEqual([
       [ false, false, false, false, false, false, false, false, false, false ],
       [ false, false, true, false, false, false, false, false, false, false ],
       [ false, false, true, false, false, false, false, false, false, false ]
     ])
 
-    model.toogleOnTopAt({bar: 'top', row: 1, col: 2})
-    expect(model._getTop()).toEqual([
+    model.toogleOnTopMatrixAt({bar: 'top', row: 1, col: 2})
+    expect(model._getTopMatrix()).toEqual([
       [ false, false, false, false, false, false, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ],
       [ false, false, true, false, false, false, false, false, false, false ]
     ])
 
     model.toogleAt({bar: 'top', row: 0, col: 2})
-    expect(model._getTop()).toEqual([
+    expect(model._getTopMatrix()).toEqual([
       [ false, false, true, false, false, false, false, false, false, false ],
       [ false, false, true, false, false, false, false, false, false, false ],
       [ false, false, true, false, false, false, false, false, false, false ]
@@ -38,23 +38,23 @@ describe('Nepohualtzintzin', function () {
 
   it('Toogles on bottom', function () {
     model.toogleAt({bar: 'bottom', row: 1, col: 5})
-    expect(model._getBottom()).toEqual([
+    expect(model._getBottomMatrix()).toEqual([
       [ false, false, false, false, false, true, false, false, false, false ],
       [ false, false, false, false, false, true, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ]
     ])
 
-    model.toogleOnBottomAt({row: 2, col: 5})
-    expect(model._getBottom()).toEqual([
+    model.toogleOnBottomMatrixAt({row: 2, col: 5})
+    expect(model._getBottomMatrix()).toEqual([
       [ false, false, false, false, false, true, false, false, false, false ],
       [ false, false, false, false, false, true, false, false, false, false ],
       [ false, false, false, false, false, true, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ]
     ])
 
-    model.toogleOnBottomAt({row: 1, col: 5})
-    expect(model._getBottom()).toEqual([
+    model.toogleOnBottomMatrixAt({bar: 'bottom', row: 1, col: 5})
+    expect(model._getBottomMatrix()).toEqual([
       [ false, false, false, false, false, true, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ],

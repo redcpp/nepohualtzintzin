@@ -14,8 +14,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     abacus: {
-      top: model._getTop(),
-      bottom: model._getBottom(),
+      top: model._getTopMatrix(),
+      bottom: model._getBottomMatrix(),
       value: model.getValue()
     },
     cols: model.getCols()
@@ -31,8 +31,8 @@ const store = new Vuex.Store({
       model.toogleAt({bar, row, col})
 
       state.abacus = {
-        top: model._getTop().slice(),
-        bottom: model._getBottom().slice(),
+        top: model._getTopMatrix().slice(),
+        bottom: model._getBottomMatrix().slice(),
         value: model.getValue()
       }
     }
