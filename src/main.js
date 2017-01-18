@@ -7,10 +7,10 @@ import Nepohualtzintzin from './model'
 
 let model = Nepohualtzintzin()
 // model.toogleAt({bar: 'top', row: 1, col: 7})
+// model.setValue(120)
 
 Vue.use(Vuex)
 
-// TODO: Refactor!
 const store = new Vuex.Store({
   state: {
     abacus: {

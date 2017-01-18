@@ -21,7 +21,7 @@ describe('Nepohualtzintzin', function () {
       [ false, false, true, false, false, false, false, false, false, false ]
     ])
 
-    model.toogleOnTopMatrixAt({bar: 'top', row: 1, col: 2})
+    model.toogleOnTopMatrixAt({row: 1, col: 2})
     expect(model._getTopMatrix()).toEqual([
       [ false, false, false, false, false, false, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ],
@@ -53,7 +53,7 @@ describe('Nepohualtzintzin', function () {
       [ false, false, false, false, false, false, false, false, false, false ]
     ])
 
-    model.toogleOnBottomMatrixAt({bar: 'bottom', row: 1, col: 5})
+    model.toogleOnBottomMatrixAt({row: 1, col: 5})
     expect(model._getBottomMatrix()).toEqual([
       [ false, false, false, false, false, true, false, false, false, false ],
       [ false, false, false, false, false, false, false, false, false, false ],
@@ -151,6 +151,6 @@ describe('Nepohualtzintzin', function () {
   })
 
   it('Gets the number of colums', function () {
-    expect(model.getCols()).toBe(10)
+    expect(model.getCols).toBeInstanceOf(Function)
   })
 })
