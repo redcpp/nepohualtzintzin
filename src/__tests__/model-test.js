@@ -124,6 +124,32 @@ describe('Nepohualtzintzin', function () {
     expect(model.getStateAt({bar: 'bottom', row: 0, col: 7})).toBe(false)
   })
 
+  it('Set the value and generates the state', function () {
+    model.setValue(1)
+    expect(model.getValue()).toBe(1)
+
+    model.setValue(102)
+    expect(model.getValue()).toBe(102)
+
+    model.setValue(150)
+    expect(model.getValue()).toBe(150)
+
+    model.setValue(160)
+    expect(model.getValue()).toBe(160)
+
+    model.setValue(653)
+    expect(model.getValue()).toBe(653)
+
+    model.setValue(27241)
+    expect(model.getValue()).toBe(27241)
+
+    model.setValue(383062010)
+    expect(model.getValue()).toBe(383062010)
+
+    model.setValue(-2)
+    expect(model.getValue()).toBe(0)
+  })
+
   it('Gets the number of colums', function () {
     expect(model.getCols()).toBe(10)
   })

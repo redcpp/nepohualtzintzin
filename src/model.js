@@ -99,8 +99,38 @@ function Nepohualtzintzin () {
     return matrix[row][col]
   }
 
+  let setValue = function (newValue) {
+    let exponet = COLS - 1
+
+    topMatrix = topMatrix.map((row) => row.map((cell) => false))
+    bottomMatrix = bottomMatrix.map((row) => row.map((cell) => false))
+
+    for (let col = 0; col < COLS; col++) {
+      if (newValue <= 0) break
+
+      let valueForTopCol = Math.pow(20, exponet) * 5
+      for (let row = topMatrix.length - 1; row >= 0; row--) {
+        if (newValue >= valueForTopCol) {
+          topMatrix[row][col] = true
+          newValue -= valueForTopCol
+        }
+      }
+
+      let valueForBottomCol = Math.pow(20, exponet)
+      for (let row = 0; row < bottomMatrix.length; row++) {
+        if (newValue >= valueForBottomCol) {
+          bottomMatrix[row][col] = true
+          newValue -= valueForBottomCol
+        }
+      }
+
+      exponet--
+    }
+  }
+
   return {
     getValue,
+    setValue,
 
     toogleAt,
     toogleOnTopMatrixAt,
