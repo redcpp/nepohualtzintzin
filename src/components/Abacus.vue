@@ -30,8 +30,8 @@ export default {
   },
   computed: mapState({
     cols: state => state.cols,
-    topRows: state => state.abacus.top.length - 1,
-    bottomRows: state => state.abacus.bottom.length - 1
+    topRows: state => state.abacus.top.length,
+    bottomRows: state => state.abacus.bottom.length
   })
 }
 </script>

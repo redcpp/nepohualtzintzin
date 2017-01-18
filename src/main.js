@@ -3,61 +3,41 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App'
+import Nepohualtzintzin from './model'
+
+let model = Nepohualtzintzin()
+// model.toogleAt({bar: 'top', row: 1, col: 7})
 
 Vue.use(Vuex)
-
-const COLS = 10
-
-const zip = rows =>
-  rows[0].map((_, c) => rows.map(row => row[c]))
-
 
 // TODO: Refactor!
 const store = new Vuex.Store({
   state: {
     abacus: {
-      top: Array(4).fill(undefined).map(row =>
-        Array(COLS + 1).fill(undefined).map(col => 0)
-      ),
-      bottom: Array(5).fill(undefined).map(row =>
-        Array(COLS + 1).fill(undefined).map(col => 0)
-      )
+      top: model._getTop(),
+      bottom: model._getBottom(),
+      value: model.getValue()
     },
-    cols: COLS
+    cols: model.getCols()
   },
   getters: {
-    number: state => {
-      let topSum = zip(state.abacus.top).map((arr) =>
-        arr.reduce((a, b) => a + b) * 5
-      )
-      let bottomSum = zip(state.abacus.bottom).map((arr) =>
-        arr.reduce((a, b) => a + b)
-      )
-      let values = topSum.map((n, i) =>
-        n + bottomSum[i]
-      )
-      let number = parseInt(
-        values.reduce(concatDecimals),
-        20
-      )
-      return number
-    },
-    value: (state, getters, { bar, col, row }) => {
-      return state.abacus[bar][row][col]
+    number: (state, getters) => model.getValue(),
+    valueAt: (state, getters, { bar, col, row }) => {
+      return model.getStateAt({bar, row, col})
     }
   },
   mutations: {
-    toogleRowCol (state, { column, row, bar }) {
-      let newBar = state.abacus[bar].slice()
-      newBar[row][column] ^= 1
-      state.abacus[bar] = newBar
+    toogleRowCol (state, { col, row, bar }) {
+      model.toogleAt({bar, row, col})
+
+      state.abacus = {
+        top: model._getTop().slice(),
+        bottom: model._getBottom().slice(),
+        value: model.getValue()
+      }
     }
   }
 })
-
-const concatDecimals = (a, b) => {
-  return a.toString(20) + b.toString(20)
-}
 
 /* eslint-disable no-new */
 new Vue({

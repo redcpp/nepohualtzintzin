@@ -4,13 +4,13 @@
       <small>Ábaco Maya</small>
     </h1>
     <abacus></abacus>
-    <h2 class="fl w-50">Vigesimal: {{ number | toBaseTwenty }}</h2>
-    <h2 class="fl w-50">Decimal: {{ number }}</h2>
+    <h2 class="fl w-50">Vigesimal: {{ value | toBaseTwenty }}</h2>
+    <h2 class="fl w-50">Decimal: {{ value }}</h2>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import Abacus from './Abacus'
 
 export default {
@@ -18,11 +18,11 @@ export default {
   components: {
     Abacus
   },
-  computed: {
-    ...mapGetters([
-      'number'
-    ])
-  },
+  computed: mapState({
+    value (state) {
+      return state.abacus.value
+    }
+  }),
   filters: {
     toBaseTwenty (n) {
       return n.toString(20).toUpperCase()

@@ -12,14 +12,14 @@ export default {
   props: ['row', 'col', 'bar'],
   computed: mapState({
     active (state) {
-      return state.abacus[this.bar][this.row][this.col]
+      return state.abacus[this.bar][this.row - 1][this.col - 1]
     }
   }),
   methods: {
     toogle () {
       this.toogleRowCol({
-        column: this.col,
-        row: this.row,
+        col: this.col - 1,
+        row: this.row - 1,
         bar: this.bar
       })
     },
