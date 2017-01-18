@@ -1,5 +1,5 @@
 'use strict'
-const Nepohualtzintzin = require('../model')
+import Nepohualtzintzin from '../model'
 
 describe('Nepohualtzintzin', function () {
   let model = Nepohualtzintzin()

@@ -150,4 +150,4 @@ function Nepohualtzintzin () {
   }
 }
 
-module.exports = Nepohualtzintzin
+export default Nepohualtzintzin
