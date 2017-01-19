@@ -6,16 +6,10 @@ Vue.use(Vuex)
 import Nepohualtzintzin from '../model'
 
 let model = Nepohualtzintzin()
-// model.toogleAt({bar: 'top', row: 1, col: 7})
-// model.setValue(120)
 
 export default new Vuex.Store({
   state: {
-    abacus: {
-      top: model._getTopMatrix(),
-      bottom: model._getBottomMatrix(),
-      value: model.getValue()
-    },
+    abacus: getAbacusNewState(),
     cols: model.getCols()
   },
   getters: {
@@ -27,20 +21,19 @@ export default new Vuex.Store({
   mutations: {
     toogleRowCol (state, { col, row, bar }) {
       model.toogleAt({bar, row, col})
-
-      state.abacus = {
-        top: model._getTopMatrix().slice(),
-        bottom: model._getBottomMatrix().slice(),
-        value: model.getValue()
-      }
+      state.abacus = getAbacusNewState()
     },
     setAbacusNumber (state, {number}) {
       model.setValue(number)
-      state.abacus = {
-        top: model._getTopMatrix().slice(),
-        bottom: model._getBottomMatrix().slice(),
-        value: model.getValue()
-      }
+      state.abacus = getAbacusNewState()
     }
   }
 })
+
+function getAbacusNewState () {
+  return {
+    top: model._getTopMatrix(),
+    bottom: model._getBottomMatrix(),
+    value: model.getValue()
+  }
+}
