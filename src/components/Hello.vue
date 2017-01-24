@@ -4,13 +4,15 @@
       <small>Ábaco Maya</small>
     </h1>
     <abacus></abacus>
-    <h2 class="fl w-50">Vigesimal: {{ value | toBaseTwenty }}</h2>
-    <h2 class="fl w-50">
-      Decimal:
-      <input type="text"
-            :value="value"
-            @input="setNumber($event.target.value)">
-    </h2>
+    <div class="mt3">
+      <h2 class="fl w-50">Vigesimal: {{ value | toBaseTwenty }}</h2>
+      <h2 class="fl w-50">
+        Decimal:
+        <input type="text"
+              :value="value"
+              @input="setNumber($event.target.value)">
+      </h2>
+    </div>
   </div>
 </template>
 
@@ -52,8 +54,8 @@ export default {
 }
 
 small {
-  font-size: 11px;
-  color: #42b983;
+  font-size: 14px;
+  color: #DA0A5B;
 }
 
 input {
@@ -61,11 +63,11 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: bold;
-  color: #2c3e50;
+  color: #131A32;
   
   border: none;
   outline: none;
   width: 200px;
-  border-bottom: 1px solid #2c3e50;
+  border-bottom: 1px solid #DA0A5B;
 }
 </style>

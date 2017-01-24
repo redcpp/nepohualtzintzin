@@ -39,11 +39,15 @@ export default {
 <style scoped>
 .abacus {
   margin: auto;
-  border: 2px solid #aaa;
+  border: 2px solid #39405E;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 5px 50px -15px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 5px 50px -15px rgba(0,0,0,0.75);
+  box-shadow: 0px 5px 50px -15px rgba(0,0,0,0.75);
 }
 
 .stick {
   display: inline-block;
-  border: 1px solid rgba(0,0,0,.3);
+  border: 1px solid #956279;
 }
 </style>

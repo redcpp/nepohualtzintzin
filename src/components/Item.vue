@@ -45,6 +45,6 @@ export default {
 .item.active {
   color: #fff;
   font-weight: bold;
-  background-color: #42b983;
+  background-color: #137893;
 }
 </style>
