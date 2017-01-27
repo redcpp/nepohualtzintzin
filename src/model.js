@@ -131,6 +131,9 @@ function Nepohualtzintzin () {
   return {
     getValue,
     setValue,
+    get value () {
+      return getValue()
+    },
 
     toogleAt,
     toogleOnTopMatrixAt,

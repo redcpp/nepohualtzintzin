@@ -1,8 +1,8 @@
 <template>
   <button @click="toogle"
           class="item "
-          :class="{ active: active, rotate: rotate }">
-    <slot></slot>
+          :class="{ active: active }">
+    <img src="../assets/conr2.svg" class="corn-icon">
   </button>
 </template>
 
@@ -14,10 +14,8 @@ export default {
   props: ['row', 'col', 'bar'],
   computed: mapState({
     active (state) {
-      return state.abacus[this.bar][this.row - 1][this.col - 1]
-    },
-    rotate () {
-      return this.bar === 'bottom'
+      let active = state.abacus[this.bar][this.row - 1][this.col - 1]
+      return (this.bar !== 'bottom' && active) || (this.bar === 'bottom' && !active)
     }
   }),
   methods: {
@@ -39,7 +37,7 @@ export default {
 .item {
   cursor: pointer;
   display: block;
-  padding: 15px;
+  padding: 0;
   margin: 5px auto;
   background-color: transparent;
   border: none;
@@ -48,16 +46,23 @@ export default {
 }
 
 .item.active {
-  color: #fff;
-  font-weight: bold;
-  background-color: #137893;
+  transform: rotateX(180deg);
+  transform-origin: 100% 100%;
 }
 
-.item.rotate {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
+.item > .corn-icon {
+  margin-top: -30px;
+}
+
+.item > .corn-icon {
+  margin-top: -30px;
+}
+
+.item.flip {
+  margin-top: -50px;
+}
+
+.corn-icon {
+  width: 50%;
 }
 </style>

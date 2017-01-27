@@ -148,6 +148,9 @@ describe('Nepohualtzintzin', function () {
 
     model.setValue(-2)
     expect(model.getValue()).toBe(0)
+
+    model.setValue(999999999999999)
+    expect(model.getValue()).toBe(10239999999999)
   })
 
   it('Gets the number of colums', function () {

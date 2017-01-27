@@ -2,7 +2,7 @@
   <div class="abacus w-90">
     <div v-for="col in cols" class="stick w-10">
       <span v-for="row in topRows">
-        <item :bar="top" :row="row" :col="col">5</item>
+        <item :bar="top" :row="row" :col="col" :style="{ zIndex: row }">5</item>
       </span>
     </div>
     <div v-for="col in cols" class="stick w-10">
@@ -49,5 +49,6 @@ export default {
 .stick {
   display: inline-block;
   border: 1px solid #956279;
+  padding: 30px 0;
 }
 </style>
