@@ -1,7 +1,8 @@
 <template>
   <button @click="toogle"
           class="item "
-          :class="{ active: active }">
+          :class="{ active: active }"
+          :style="{ zIndex: !active ? row : 10-row }">
     <img src="../assets/conr2.svg" class="corn-icon">
   </button>
 </template>
@@ -35,6 +36,7 @@ export default {
 
 <style scoped>
 .item {
+  position: relative;
   cursor: pointer;
   display: block;
   padding: 0;
@@ -42,27 +44,21 @@ export default {
   background-color: transparent;
   border: none;
   border-radius: 3px;
+  margin-top: -30px;
   outline: none;
+  
+  -webkit-transition: -webkit-transform 150ms;
+  transition: transform 150ms;
+  transform-origin: 0% 70%;
+  -webkit-filter: drop-shadow( 0px -2px 3px rgba(0,0,0,0.6) );
+          filter: drop-shadow( 0px -2px 3px rgba(0,0,0,0.6) );
 }
 
 .item.active {
   transform: rotateX(180deg);
-  transform-origin: 100% 100%;
-}
-
-.item > .corn-icon {
-  margin-top: -30px;
-}
-
-.item > .corn-icon {
-  margin-top: -30px;
-}
-
-.item.flip {
-  margin-top: -50px;
 }
 
 .corn-icon {
-  width: 50%;
+  width: 40%;
 }
 </style>
