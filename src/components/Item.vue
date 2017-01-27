@@ -1,5 +1,7 @@
 <template>
-  <button class="item " @click="toogle" :class="{ active: active }">
+  <button @click="toogle"
+          class="item "
+          :class="{ active: active, rotate: rotate }">
     <slot></slot>
   </button>
 </template>
@@ -13,6 +15,9 @@ export default {
   computed: mapState({
     active (state) {
       return state.abacus[this.bar][this.row - 1][this.col - 1]
+    },
+    rotate () {
+      return this.bar === 'bottom'
     }
   }),
   methods: {
@@ -46,5 +51,13 @@ export default {
   color: #fff;
   font-weight: bold;
   background-color: #137893;
+}
+
+.item.rotate {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 </style>
